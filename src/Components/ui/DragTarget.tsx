@@ -316,19 +316,22 @@ const DragTarget = () => {
 
   return (
     <section className="xl:col-span-7 col-span-12">
-      <div className="border-4 rounded-lg">
+      <div className="border-4 rounded-lg bg-[#f9f9f9]">
         <div
-          className={`flex items-center gap-2 px-8 pt-4 ${
-            !inputField.length && "justify-center"
+          className={` px-8 pt-4  ${
+            inputField.length ? "justify-normal" : "hidden"
           }`}
         >
-          <div className="text-3xl">
-            <BsPersonCircle />
+          <div className="flex items-center gap-2">
+            <div className="text-3xl">
+              <BsPersonCircle />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">Title of Content</h3>
+              <p className="text-slate-500">Description</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold">Title of Content</h3>
-            <p className="text-slate-500">Description</p>
-          </div>
+          <p className="mt-4 font-semibold">Untitled information</p>
         </div>
         <div
           className="xl:col-span-7 col-span-12  h-fit min-h-[20vh] grid lg:grid-cols-2 gap-8 px-8 py-2"
@@ -354,19 +357,26 @@ const DragTarget = () => {
         </div>
       </div>
       <br />
-      <div className="border-4 rounded-lg">
+      <div
+        className={` rounded-lg  ${
+          inputFieldTwo.length && "bg-[#f9f9f9] border-4"
+        }`}
+      >
         <div
-          className={`flex items-center gap-2 px-8 pt-4 ${
+          className={` px-8 pt-4  ${
             inputFieldTwo.length ? "justify-normal" : "hidden"
           }`}
         >
-          <div className="text-3xl">
-            <BsPersonCircle />
+          <div className="flex items-center gap-2">
+            <div className="text-3xl">
+              <BsPersonCircle />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">Title of Content</h3>
+              <p className="text-slate-500">Description</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold">Title of Content</h3>
-            <p className="text-slate-500">Description</p>
-          </div>
+          <p className="mt-4 font-semibold">Untitled information</p>
         </div>
         <div
           className="xl:col-span-7 col-span-12  h-fit min-h-[10vh] gap-8 py-2 px-8 "

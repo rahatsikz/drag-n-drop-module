@@ -4,7 +4,7 @@ import Head from "next/head";
 
 const HomePage = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <Head>
         <title>Module Drag and Drop</title>
         <meta
@@ -14,7 +14,7 @@ const HomePage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="grid xl:grid-cols-12 xl:gap-12 gap-4 my-12">
+      <div className="grid xl:grid-cols-12 xl:gap-12 gap-4 my-12 ">
         <DragField />
         <DragTarget />
       </div>
