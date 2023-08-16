@@ -1,5 +1,6 @@
 import { MultiSelect, MultiSelectProps } from "@uc-react-ui/multiselect";
 import { DragEvent, useState } from "react";
+import { BsPersonBoundingBox, BsPersonCircle } from "react-icons/bs";
 
 const DragTarget = () => {
   const [inputField, setInputField] = useState<string[]>([]);
@@ -23,7 +24,7 @@ const DragTarget = () => {
     // console.log(e.dataTransfer);
   };
 
-  console.log({ inputFieldTwo, inputField });
+  // console.log({ inputFieldTwo, inputField });
 
   const handleDragOverTwo = (e: DragEvent) => {
     e.preventDefault();
@@ -300,7 +301,7 @@ const DragTarget = () => {
     if (type === "section") {
       return (
         <div
-          className="xl:col-span-7 col-span-12 h-fit min-h-[20vh] w-full grid lg:grid-cols-2 gap-8 py-4"
+          className="xl:col-span-7 col-span-12 h-fit min-h-[20vh] w-full grid lg:grid-cols-2 gap-8"
           onDrop={handleOnDropTwo}
           onDragOver={handleDragOver}
         >
@@ -315,39 +316,79 @@ const DragTarget = () => {
 
   return (
     <section className="xl:col-span-7 col-span-12">
-      <div
-        className="xl:col-span-7 col-span-12 border-4 h-fit min-h-[20vh] grid lg:grid-cols-2 gap-8 px-8 py-4 rounded-lg"
-        onDrop={handleOnDrop}
-        onDragOver={handleDragOver}
-      >
-        {inputField.length &&
-        inputField.filter((input: any) => input.type !== "section") ? (
-          inputField.map((input, idx) => (
-            <div key={idx}>{renderInput(input)}</div>
-          ))
-        ) : (
-          <p className="text-center text-lg col-span-12">
-            Drag and Drop your fields here
-          </p>
-        )}
-        <div className="py-8"></div>
+      <div className="border-4 rounded-lg">
+        <div
+          className={`flex items-center gap-2 px-8 pt-4 ${
+            !inputField.length && "justify-center"
+          }`}
+        >
+          <div className="text-3xl">
+            <BsPersonCircle />
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold">Title of Content</h3>
+            <p className="text-slate-500">Description</p>
+          </div>
+        </div>
+        <div
+          className="xl:col-span-7 col-span-12  h-fit min-h-[20vh] grid lg:grid-cols-2 gap-8 px-8 py-2"
+          onDrop={handleOnDrop}
+          onDragOver={handleDragOver}
+        >
+          {inputField.length &&
+          inputField.filter((input: any) => input.type !== "section") ? (
+            inputField.map((input, idx) => (
+              <div key={idx}>{renderInput(input)}</div>
+            ))
+          ) : (
+            <div className="col-span-12">
+              <p className="text-center text-base mt-4 ">
+                Drag and Drop your fields here
+              </p>
+              <p className="text-center text-4xl col-span-12 bg-[#DEDEDE] w-96 mx-auto mt-8 pt-1 pb-3">
+                +
+              </p>
+            </div>
+          )}
+          <div className="py-8"></div>
+        </div>
       </div>
       <br />
-      <div
-        className="xl:col-span-7 col-span-12 border-4 h-fit min-h-[20vh] gap-8 py-4 px-8 rounded-lg"
-        onDrop={handleOnDropTwo}
-        onDragOver={handleDragOverTwo}
-      >
-        {inputFieldTwo.length ? (
-          inputFieldTwo.map((input, idx) => (
-            <div key={idx}>{renderSection(input)}</div>
-          ))
-        ) : (
-          <p className="text-center text-lg col-span-12 underline underline-offset-8">
-            Drag and Drop New Section for adding A New Section
-          </p>
-        )}
-        <div className="py-8"></div>
+      <div className="border-4 rounded-lg">
+        <div
+          className={`flex items-center gap-2 px-8 pt-4 ${
+            inputFieldTwo.length ? "justify-normal" : "hidden"
+          }`}
+        >
+          <div className="text-3xl">
+            <BsPersonCircle />
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold">Title of Content</h3>
+            <p className="text-slate-500">Description</p>
+          </div>
+        </div>
+        <div
+          className="xl:col-span-7 col-span-12  h-fit min-h-[10vh] gap-8 py-2 px-8 "
+          onDrop={handleOnDropTwo}
+          onDragOver={handleDragOverTwo}
+        >
+          {inputFieldTwo.length ? (
+            inputFieldTwo.map((input, idx) => (
+              <div key={idx}>{renderSection(input)}</div>
+            ))
+          ) : (
+            <div className="col-span-12">
+              <p className="text-center text-lg mt-4">
+                Drag and Drop New Section for adding A New Section
+              </p>
+              <p className="text-center text-4xl  bg-[#DEDEDE] w-96 mx-auto mt-8 pt-1 pb-3">
+                +
+              </p>
+            </div>
+          )}
+          <div className="py-8"></div>
+        </div>
       </div>
     </section>
   );
