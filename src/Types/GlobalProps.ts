@@ -13,4 +13,5 @@ export interface GlobalProps {
   setCurrencyValue?: (newValue: any) => void;
   setMultiPickerValue?: (newValue: any) => void;
   setUrlValue?: (newValue: any) => void;
+  setImgValue?: (newValue: any) => void;
 }

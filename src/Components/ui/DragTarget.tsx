@@ -57,6 +57,7 @@ const DragTarget = () => {
   const [currencyValue, setCurrencyValue] = useState<string[]>([]);
   const [multipickerValue, setMultiPickerValue] = useState<string[]>([]);
   const [urlValue, setUrlValue] = useState<string[]>([]);
+  const [imgValue, setImgValue] = useState([]);
 
   console.log({ textValue });
   console.log({ numberValue });
@@ -72,6 +73,7 @@ const DragTarget = () => {
   console.log({ currencyValue });
   console.log({ multipickerValue });
   console.log({ urlValue });
+  console.log({ imgValue });
 
   const renderInput = (type: string) => {
     if (type === "text") {
@@ -81,7 +83,7 @@ const DragTarget = () => {
     } else if (type === "date") {
       return <DateTime setDateValue={setDateValue} />;
     } else if (type === "image") {
-      return <ImageField />;
+      return <ImageField setImgValue={setImgValue} />;
     } else if (type === "toggle") {
       return <Toggle setToggleValue={setToggleValue} />;
     } else if (type === "email") {
