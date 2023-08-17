@@ -1,4 +1,20 @@
-const Search = () => {
+import { GlobalProps } from "@/Types/GlobalProps";
+import { useState, FC, ChangeEvent } from "react";
+
+const Search: FC<GlobalProps> = ({ setSearchValue }) => {
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleBlur = () => {
+    if (inputValue) {
+      setSearchValue!((prevValues: any) => [...prevValues, inputValue]);
+      setInputValue("");
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <div className="form-control">
       <label className="label">
@@ -8,7 +24,9 @@ const Search = () => {
         <input
           type="text"
           placeholder="Type Here..."
-          className="input input-bordered w-full focus:outline-none"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          className="input input-bordered focus:border-[#323232] w-full focus:outline-none"
         />
         <button className="btn btn-square">
           <svg

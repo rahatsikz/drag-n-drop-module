@@ -1,15 +1,12 @@
+import { GlobalProps } from "@/Types/GlobalProps";
 import { useState, FC, ChangeEvent } from "react";
 
-interface TextProps {
-  setTextValue: (newValue: any) => void;
-}
-
-const Text: FC<TextProps> = ({ setTextValue }) => {
+const Text: FC<GlobalProps> = ({ setTextValue }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleBlur = () => {
     if (inputValue) {
-      setTextValue((prevValues: any) => [...prevValues, inputValue]);
+      setTextValue!((prevValues: any) => [...prevValues, inputValue]);
       setInputValue("");
     }
   };
@@ -26,10 +23,10 @@ const Text: FC<TextProps> = ({ setTextValue }) => {
       <input
         type="text"
         placeholder="Type here"
-        value={inputValue}
+        // value={inputValue}
         onBlur={handleBlur}
         onChange={handleChange}
-        className="input input-bordered focus:outline-none w-full"
+        className="input input-bordered focus:border-[#323232] focus:outline-none w-full"
       />
     </div>
   );

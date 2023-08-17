@@ -44,42 +44,68 @@ const DragTarget = () => {
   };
 
   const [textValue, setTextValue] = useState<string[]>([]);
+  const [numberValue, setNumberValue] = useState<number[]>([]);
+  const [dateValue, setDateValue] = useState<string[]>([]);
+  const [toggleValue, setToggleValue] = useState([]);
+  const [emailValue, setEmailValue] = useState<string[]>([]);
+  const [phoneValue, setPhoneValue] = useState<number[]>([]);
+  const [userValue, setUserValue] = useState<string[]>([]);
+  const [searchValue, setSearchValue] = useState<string[]>([]);
+  const [textAreaValue, setTextAreaValue] = useState<string[]>([]);
+  const [multiSearchValue, setMultiSearchValue] = useState<string[]>([]);
+  const [pickerValue, setPickerValue] = useState<string[]>([]);
+  const [currencyValue, setCurrencyValue] = useState<string[]>([]);
+  const [multipickerValue, setMultiPickerValue] = useState<string[]>([]);
+  const [urlValue, setUrlValue] = useState<string[]>([]);
 
-  console.log(textValue);
+  console.log({ textValue });
+  console.log({ numberValue });
+  console.log({ dateValue });
+  console.log({ toggleValue });
+  console.log({ emailValue });
+  console.log({ phoneValue });
+  console.log({ userValue });
+  console.log({ searchValue });
+  console.log({ textAreaValue });
+  console.log({ multiSearchValue });
+  console.log({ pickerValue });
+  console.log({ currencyValue });
+  console.log({ multipickerValue });
+  console.log({ urlValue });
 
   const renderInput = (type: string) => {
     if (type === "text") {
       return <Text setTextValue={setTextValue} />;
     } else if (type === "number") {
-      return <Number />;
+      return <Number setNumberValue={setNumberValue} />;
     } else if (type === "date") {
-      return <DateTime />;
+      return <DateTime setDateValue={setDateValue} />;
     } else if (type === "image") {
       return <ImageField />;
     } else if (type === "toggle") {
-      return <Toggle />;
+      return <Toggle setToggleValue={setToggleValue} />;
     } else if (type === "email") {
-      return <EmailField />;
+      return <EmailField setEmailValue={setEmailValue} />;
     } else if (type === "phone") {
-      return <Phone />;
+      return <Phone setPhoneValue={setPhoneValue} />;
     } else if (type === "user") {
-      return <User />;
+      return <User setUserValue={setUserValue} />;
     } else if (type === "search") {
-      return <Search />;
+      return <Search setSearchValue={setSearchValue} />;
     } else if (type === "textarea") {
-      return <TextArea />;
+      return <TextArea setTextAreaValue={setTextAreaValue} />;
     } else if (type === "multisearch") {
-      return <MultiSearch />;
+      return <MultiSearch setMultiSearchValue={setMultiSearchValue} />;
     } else if (type === "picker") {
-      return <Picker />;
+      return <Picker setPickerValue={setPickerValue} />;
     } else if (type === "multipicker") {
-      return <MultiPicker />;
+      return <MultiPicker setMultiPickerValue={setMultiPickerValue} />;
     } else if (type === "currency") {
-      return <Currency />;
+      return <Currency setCurrencyValue={setCurrencyValue} />;
     } else if (type === "file") {
       return <FileField />;
     } else if (type === "url") {
-      return <UrlField />;
+      return <UrlField setUrlValue={setUrlValue} />;
     }
     // Handle other input types here
     return null;

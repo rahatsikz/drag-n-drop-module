@@ -163,7 +163,7 @@ const DragField = () => {
             type="text"
             placeholder="Search Fields..."
             onChange={handleSearch}
-            className="input input-bordered w-full focus:outline-none"
+            className="input input-bordered focus:border-[#323232] w-full focus:outline-none"
           />
           <button className="btn btn-square">
             <svg

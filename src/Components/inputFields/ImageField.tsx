@@ -6,7 +6,7 @@ const ImageField = () => {
       </label>
       <input
         type="file"
-        className="file-input file-input-bordered focus:outline-none w-full"
+        className="file-input file-input-bordered focus:border-[#323232] focus:outline-none w-full"
       />
     </div>
   );
