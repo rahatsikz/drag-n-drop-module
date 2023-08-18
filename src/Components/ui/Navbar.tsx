@@ -11,6 +11,7 @@ const Navbar = () => {
     <div
       style={{
         backgroundImage: `url(${navBG.src})`,
+        // width: "100%",
       }}
     >
       <div className="navbar container mx-auto text-white justify-evenly">

@@ -16,6 +16,7 @@ import MultiPicker from "../inputFields/MultiPicker";
 import Currency from "../inputFields/Currency";
 import FileField from "../inputFields/FileField";
 import UrlField from "../inputFields/UrlField";
+import { toast } from "react-hot-toast";
 
 const DragTarget = () => {
   const [inputField, setInputField] = useState<string[]>([]);
@@ -59,21 +60,72 @@ const DragTarget = () => {
   const [urlValue, setUrlValue] = useState<string[]>([]);
   const [imgValue, setImgValue] = useState([]);
 
-  console.log({ textValue });
-  console.log({ numberValue });
-  console.log({ dateValue });
-  console.log({ toggleValue });
-  console.log({ emailValue });
-  console.log({ phoneValue });
-  console.log({ userValue });
-  console.log({ searchValue });
-  console.log({ textAreaValue });
-  console.log({ multiSearchValue });
-  console.log({ pickerValue });
-  console.log({ currencyValue });
-  console.log({ multipickerValue });
-  console.log({ urlValue });
-  console.log({ imgValue });
+  // console.log({ textValue });
+  // console.log({ numberValue });
+  // console.log({ dateValue });
+  // console.log({ toggleValue });
+  // console.log({ emailValue });
+  // console.log({ phoneValue });
+  // console.log({ userValue });
+  // console.log({ searchValue });
+  // console.log({ textAreaValue });
+  // console.log({ multiSearchValue });
+  // console.log({ pickerValue });
+  // console.log({ currencyValue });
+  // console.log({ multipickerValue });
+  // console.log({ urlValue });
+  // console.log({ imgValue });
+
+  const [closeModal, setCloseModal] = useState<string | null>("Rahat");
+
+  const handleSubmit = (e: { preventDefault: () => void; target: any }) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const owner = form.owner.value;
+
+    // console.log({ name, owner, textValue });
+
+    const data = {
+      name,
+      creator: owner,
+      singleLineText: textValue || null,
+      number: numberValue || null,
+      dateNTime: dateValue || null,
+      image: imgValue || null,
+      toggle: toggleValue || null,
+      email: emailValue || null,
+      phone: phoneValue || null,
+      user: userValue || null,
+      search: searchValue || null,
+      textArea: textAreaValue || null,
+      multiSearch: multiSearchValue || null,
+      picker: pickerValue || null,
+      multiPick: multipickerValue || null,
+      currency: currencyValue || null,
+      link: urlValue || null,
+      // fileLink: null,
+    };
+
+    console.log(data);
+
+    fetch("http://localhost:3003/api/v1/module/create-module", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          toast.success("Modules Created Successfully");
+        }
+      });
+
+    setCloseModal(null);
+  };
 
   const renderInput = (type: string) => {
     if (type === "text") {
@@ -132,6 +184,64 @@ const DragTarget = () => {
 
   return (
     <section className="xl:col-span-7 col-span-12">
+      <div className="flex gap-4 mb-4 bg-[#DEDEDE] p-4 rounded-lg">
+        <div className="form-control w-full">
+          <input
+            type="text"
+            placeholder="Module Name"
+            className="input input-bordered focus:border-[#323232] focus:outline-none max-w-xs"
+          />
+        </div>
+        <button className="btn">Cancel</button>
+        <label htmlFor="my_modal_7" className="btn">
+          save
+        </label>
+
+        {/* Modal */}
+        <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+        {closeModal && (
+          <div className="modal">
+            <div className="modal-box">
+              <form action="" onSubmit={handleSubmit}>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Module Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Module Name"
+                    name="name"
+                    className="input input-bordered focus:border-[#323232] focus:outline-none w-full"
+                  />
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Module Owner</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Module Owner"
+                    name="owner"
+                    className="input input-bordered focus:border-[#323232] focus:outline-none w-full"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-neutral btn-block mt-4"
+                >
+                  Save
+                </button>
+              </form>
+            </div>
+            <label className="modal-backdrop" htmlFor="my_modal_7">
+              Close
+            </label>
+          </div>
+        )}
+      </div>
+      {/* drop zone */}
+
       <div className="border-4 rounded-lg bg-[#f9f9f9]">
         <div
           className={` px-8 pt-4  ${

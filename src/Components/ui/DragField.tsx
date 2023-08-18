@@ -146,7 +146,7 @@ const DragField = () => {
   };
 
   return (
-    <section className="xl:col-span-5 col-span-12 bg-[#dedede] p-8">
+    <section className="xl:col-span-5 col-span-12 bg-[#dedede] p-8  ">
       <h2 className="font-semibold text-xl">Build your own Module </h2>
       <p className="my-4 max-w-sm">
         You can create personalised modules by using fields as per your
