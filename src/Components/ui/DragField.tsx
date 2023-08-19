@@ -146,7 +146,7 @@ const DragField = () => {
   };
 
   return (
-    <section className="xl:col-span-5 col-span-12 bg-[#dedede] p-8  ">
+    <section className="md:col-span-5 col-span-12 bg-[#dedede] p-8  ">
       <h2 className="font-semibold text-xl">Build your own Module </h2>
       <p className="my-4 max-w-sm">
         You can create personalised modules by using fields as per your
@@ -184,7 +184,7 @@ const DragField = () => {
         </div>
       </div>
 
-      <div className=" grid grid-cols-2 gap-4 ">
+      <div className=" grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-4 ">
         {fieldInputs.slice(0, 16).map((input, idx) => (
           <div
             key={idx}

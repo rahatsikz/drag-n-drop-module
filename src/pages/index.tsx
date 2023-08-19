@@ -13,7 +13,7 @@ const HomePage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="grid xl:grid-cols-12 xl:gap-12 gap-4 my-12 ">
+      <div className="grid md:grid-cols-12 xl:gap-12 gap-4 my-12 ">
         <DragField />
         <DragTarget />
       </div>

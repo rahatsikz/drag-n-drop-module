@@ -1,5 +1,5 @@
 import { DragEvent, useState } from "react";
-import { BsPersonBoundingBox, BsPersonCircle } from "react-icons/bs";
+import { BsPersonCircle } from "react-icons/bs";
 import Text from "../inputFields/Text";
 import Number from "../inputFields/Number";
 import DateTime from "../inputFields/DateTime";
@@ -70,13 +70,14 @@ const DragTarget = () => {
   // console.log({ searchValue });
   // console.log({ textAreaValue });
   // console.log({ multiSearchValue });
-  // console.log({ pickerValue });
+  console.log({ pickerValue });
   // console.log({ currencyValue });
   // console.log({ multipickerValue });
   // console.log({ urlValue });
   // console.log({ imgValue });
 
   const [closeModal, setCloseModal] = useState<string | null>("Rahat");
+  const [moduleName, setModuleName] = useState<string>("");
 
   const handleSubmit = (e: { preventDefault: () => void; target: any }) => {
     e.preventDefault();
@@ -87,7 +88,7 @@ const DragTarget = () => {
     // console.log({ name, owner, textValue });
 
     const data = {
-      name,
+      name: moduleName ? moduleName : name,
       creator: owner,
       singleLineText: textValue || null,
       number: numberValue || null,
@@ -120,7 +121,7 @@ const DragTarget = () => {
       .then((data) => {
         console.log(data);
         if (data.success) {
-          toast.success("Modules Created Successfully");
+          toast.success("Module Created Successfully");
         }
       });
 
@@ -183,12 +184,13 @@ const DragTarget = () => {
   };
 
   return (
-    <section className="xl:col-span-7 col-span-12">
+    <section className="md:col-span-7 col-span-12">
       <div className="flex gap-4 mb-4 bg-[#DEDEDE] p-4 rounded-lg">
         <div className="form-control w-full">
           <input
             type="text"
             placeholder="Module Name"
+            onChange={(e) => setModuleName(e.target.value)}
             className="input input-bordered focus:border-[#323232] focus:outline-none max-w-xs"
           />
         </div>
@@ -211,6 +213,7 @@ const DragTarget = () => {
                     type="text"
                     placeholder="Module Name"
                     name="name"
+                    defaultValue={moduleName}
                     className="input input-bordered focus:border-[#323232] focus:outline-none w-full"
                   />
                 </div>

@@ -11,3 +11,9 @@
 body {
   color: rgb(var(--foreground-rgb));
 }
+
+@media (min-width: 600px) {
+  .resp-sm {
+    width: 100%;
+  }
+}
