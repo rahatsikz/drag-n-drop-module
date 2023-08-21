@@ -1,6 +1,12 @@
 ## Drag and Drop Module (Front End)
 
-First, run the development server:
+First, install Dependendcies:
+
+```
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
