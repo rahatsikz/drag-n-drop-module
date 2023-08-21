@@ -17,6 +17,7 @@ import Currency from "../inputFields/Currency";
 import FileField from "../inputFields/FileField";
 import UrlField from "../inputFields/UrlField";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const DragTarget = () => {
   const [inputField, setInputField] = useState<string[]>([]);
@@ -79,6 +80,8 @@ const DragTarget = () => {
   const [closeModal, setCloseModal] = useState<string | null>("Rahat");
   const [moduleName, setModuleName] = useState<string>("");
 
+  const router = useRouter();
+
   const handleSubmit = (e: { preventDefault: () => void; target: any }) => {
     e.preventDefault();
     const form = e.target;
@@ -122,6 +125,8 @@ const DragTarget = () => {
         console.log(data);
         if (data.success) {
           toast.success("Module Created Successfully");
+
+          router.push("/module/latest");
         }
       });
 

@@ -120,10 +120,7 @@ const DragField = () => {
 
   const [fieldInputs, setFieldInputs] = useState<Iinput[]>(inputs);
 
-  // Reset to original data when search input is empty
-  // useEffect(() => {
-  //   setFieldInputs(inputs);
-  // }, [fieldInputs, inputs]);
+  
 
   const handleSearch = (e: { target: { value: any } }) => {
     const fieldName = e.target.value;
@@ -138,10 +135,7 @@ const DragField = () => {
       });
       setFieldInputs(filtered);
 
-      // setFields(fields);
-
-      // const mapped = inputs.map((data) => data.name);
-      // console.log(mapped);
+     
     }
   };
 
@@ -155,9 +149,7 @@ const DragField = () => {
       <h2 className="font-semibold text-xl mb-4">New Fields </h2>
 
       <div className="form-control mb-4">
-        {/* <label className="label">
-          <span className="label-text">Search</span>
-        </label> */}
+       
         <div className="input-group">
           <input
             type="text"
@@ -201,7 +193,7 @@ const DragField = () => {
         {fieldInputs.slice(16).map((input, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-2 bg-[#F6F6F6] rounded-md lg:h-12 h-20 px-8 mt-4 justify-center"
+            className="flex items-center gap-2 bg-[#F6F6F6] rounded-md lg:h-12 h-20 px-8 mt-4 justify-center sm:justify-start xl:justify-center"
             draggable
             onDragStart={(e) => handleOnDrag(e, input.type)}
           >
@@ -210,16 +202,7 @@ const DragField = () => {
           </div>
         ))}
       </div>
-      {/* <div
-        className="flex items-center gap-2 bg-[#F6F6F6] rounded-md lg:h-12 h-20 px-8 mt-4 justify-center"
-        draggable
-        onDragStart={(e) => handleOnDrag(e, "section")}
-      >
-        <span>
-          <BsLayoutTextSidebarReverse />
-        </span>
-        New Section
-      </div> */}
+    
     </section>
   );
 };
