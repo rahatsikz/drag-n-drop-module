@@ -95,7 +95,7 @@ const DragTarget = () => {
       creator: owner,
       singleLineText: textValue || null,
       number: numberValue || null,
-      dateNTime: dateValue || null,
+      datetime: dateValue || null,
       image: imgValue || null,
       toggle: toggleValue || null,
       email: emailValue || null,

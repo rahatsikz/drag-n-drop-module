@@ -12,7 +12,7 @@ type IData = {
   creator: string;
   singleLineText?: string[];
   number?: string[];
-  dateNTime?: string[];
+  datetime?: string[];
   image?: string[];
   toggle?: string[];
   email?: string[];
@@ -85,9 +85,9 @@ const LatestData = () => {
         }
       })}
 
-      {restData.dateNTime?.length! > 0 && (
+      {restData.datetime?.length! > 0 && (
         <div>
-          {restData.dateNTime?.map((input, idx) => (
+          {restData.datetime?.map((input, idx) => (
             <div key={idx}>Date & Time: {input}</div>
           ))}
         </div>
